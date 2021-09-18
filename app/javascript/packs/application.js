@@ -46,7 +46,7 @@ $(document).on("turbolinks:load", function()
 $(document).on("turbolinks:load", function(){
   
     var video = document.querySelector('video');
-    var mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+    var mimeCodec = 'video/mp4; codecs="avc1.64002A, mp4a.40.2"';
   
   if ('MediaSource' in window && MediaSource.isTypeSupported(mimeCodec)) {
     var mediaSource = new MediaSource;
@@ -56,15 +56,7 @@ $(document).on("turbolinks:load", function(){
     console.error('Unsupported MIME type or codec: ', mimeCodec);
   }
  
-  function wait(ms){
-    var start = new Date().getTime();
-    var end = start;
-    while(end < start + ms) {
-      end = new Date().getTime();
-   }
- }
-
- var cutoff = 9;
+ var cutoff = 2;
 
 function addData(sourceBuffer, end){
   fetchAB(end, function (buf) {
@@ -87,6 +79,7 @@ function addData(sourceBuffer, end){
 
 
  function sourceOpen (_) {
+   console.log("The source is now open!");
     var mediaSource = this;
     var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
     var segment_count = addData(sourceBuffer, 1);  

@@ -3,6 +3,7 @@ class CreateVideos < ActiveRecord::Migration[6.1]
     create_table :videos do |t|
       t.string :name
       t.integer :count, :default => 0
+      t.integer :party_id
       t.timestamps
     end
   end

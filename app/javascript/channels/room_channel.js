@@ -21,7 +21,6 @@ consumer.subscriptions.create("RoomChannel", {
       video.play();
     }
     else{
-      console.log(data);
       $("#view_count").text("View Count: " + data );
     }
   

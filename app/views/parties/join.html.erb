@@ -1,0 +1,17 @@
+<div class="container">
+    <h1> Current Parties </h1>
+    <% if !@parties.empty? %>
+    <% @parties.each do |party| %>
+        <div class ="row">
+            <div class="col-md-3">
+                <%= link_to party.name, party_path(party) %>
+            </div>
+            <div class="col-md-3">
+                <%= party.yt_video_id %>
+            </div>
+        </div>
+    <%end%>
+    <%else%>
+    <h2> Looks like there are no parties right now. Feel free to create your own! </p>
+    <%end%>
+</div>

@@ -11,9 +11,24 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-dark">
-      <%= link_to "Home", root_path, class: "navbar-brand" %>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to "Home", root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Start a Party", new_party_path, class: 'navbar-brand' %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Join a Party", join_party_path, class: 'navbar-brand' %>
+      </li>
+   
+    </ul>
+  </div>
+</nav>
     <%= yield %>
     <footer class="footer navbar navbar-dark bg-dark"></footer>
   </body>
