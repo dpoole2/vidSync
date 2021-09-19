@@ -19,7 +19,7 @@ class PartiesController < ApplicationController
 
     respond_to do |format|
       if @party.save
-        format.html { redirect_to video_path(@party.video), notice: "Party was successfully created." }
+        format.html { redirect_to party_path(@party), notice: "Party was successfully created." }
         format.json { render :show, status: :created, location: @party }
       else
         format.html { render :new, status: :unprocessable_entity }

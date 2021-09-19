@@ -22,26 +22,30 @@ Turbolinks.start()
 ActiveStorage.start()
 
 //Video controller
-$(document).on("turbolinks:load", function()
-{
-  $("#video-player").on('pause', function(event)
-  {
+
+$(document).on('turbolinks:load', function(){
+
+   function submit() {
+    var message = $("#chat-input").val();
     $.ajax({
       type: "POST",
-      url: '/pause_video?video=1',
-      data: {pause: 1}
+      url: '/chats',
+      data: {message, party_id: 3}
     });
-  });
-  $("#video-player").on('play', function(event)
+    $("#chat-input").val('');
+    $("#content").scrollTop($("#content").height());
+  }
+  $("#input-button").on('click', function()
   {
-    $.ajax({
-      type: "POST",
-      url: '/play_video?video=1',
-      data: {play: 1}
-    });
+    submit();
   });
+  $('#chat-input').on('keypress', function(event) {
+    if (event.keyCode == 13) {
+      submit();
+    }
 });
 
+});
 
 $(document).on("turbolinks:load", function(){
   
@@ -79,7 +83,6 @@ function addData(sourceBuffer, end){
 
 
  function sourceOpen (_) {
-   console.log("The source is now open!");
     var mediaSource = this;
     var sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
     var segment_count = addData(sourceBuffer, 1);  

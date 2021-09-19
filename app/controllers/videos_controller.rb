@@ -34,6 +34,11 @@ class VideosController < ApplicationController
     ActionCable.server.broadcast("room_channel", "PLAY")
   end
 
+  def seek
+    ActionCable.server.broadcast("room_channel", params)
+  end
+
+
   # POST /videos or /videos.json
   def create
     @video = Video.new(video_params)
